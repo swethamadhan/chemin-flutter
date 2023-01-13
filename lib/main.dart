@@ -1,5 +1,6 @@
-import 'package:bems/NavBar.dart';
-import 'package:bems/signup.dart';
+import 'package:bems/login.dart';
+
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,12 +13,11 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
+
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home:SignUp()
-    );
+        debugShowCheckedModeBanner: false, home: LoginScreens());
   }
 }

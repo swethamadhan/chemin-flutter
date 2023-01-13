@@ -168,45 +168,45 @@ class _LoginScreensState extends State<LoginScreens> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.light,
-          child: GestureDetector(
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                      height: double.infinity,
-                      width: double.infinity,
-                      child: SingleChildScrollView(
-                        physics: AlwaysScrollableScrollPhysics(),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 25,
-                          vertical: 120,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-
-                            Text(
-                              'SIGN IN',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 0, 0, 0),
-                                fontSize: 40,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 50),
-                            buildEmail(),
-                            SizedBox(height: 50),
-                            buildPassword(),
-                            SizedBox(height: 30),
-                            buildForgetpass(),
-                            buildRememberme(),
-                            buildLoginBtn(),
-                            buildSignupBtn(),
-                          ],
-                        ),
-                      ))
-                ],
-              )),
-        ));
+      value: SystemUiOverlayStyle.light,
+      child: GestureDetector(
+          child: Stack(
+        children: <Widget>[
+          Container(
+              height: double.infinity,
+              width: double.infinity,
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 25,
+                  vertical: 120,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    
+                    Text(
+                      'SIGN IN',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 50),
+                    buildEmail(),
+                    SizedBox(height: 50),
+                    buildPassword(),
+                    SizedBox(height: 30),
+                    buildForgetpass(),
+                    buildRememberme(),
+                    buildLoginBtn(),
+                    buildSignupBtn(),
+                  ],
+                ),
+              ))
+        ],
+      )),
+    ));
   }
 }
