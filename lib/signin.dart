@@ -1,3 +1,5 @@
+import 'package:bems/Forgot.dart';
+import 'package:bems/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/material/colors.dart';
@@ -12,41 +14,41 @@ class LoginScreens extends StatefulWidget {
 class _LoginScreensState extends State<LoginScreens> {
   bool isRememberMe = false;
   Widget buildEmail() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'EMAIL',
-          style: TextStyle(
-              color: Color.fromARGB(255, 0, 0, 0),
-              fontSize: 16,
-              fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 14),
-        Container(
-          alignment: Alignment.centerLeft,
-          // ignore: prefer_const_constructors
-          decoration: BoxDecoration(
-              color: Color.fromARGB(255, 194, 194, 194),
-              borderRadius: BorderRadius.circular(
-                (10),
-              )),
-          height: 40,
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(
-              color: Color.fromARGB(255, 0, 0, 0),
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.all(13.0),
-              hintText: 'Enter your Email',
-              hintStyle: TextStyle(),
-            ),
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(
+        'Email',
+        style: TextStyle(
+            color: Color.fromARGB(255, 0, 0, 0),
+            fontSize: 15,
+            fontWeight: FontWeight.bold),
+      ),
+      SizedBox(height: 14),
+      Container(
+        alignment: Alignment.centerLeft,
+
+        // ignore: prefer_const_constructors
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+          (10),
+        )),
+        height: 40,
+        child: TextField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide:
+                    const BorderSide(color: Color(0xff12734C), width: 1)),
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide:
+                    const BorderSide(color: Color(0xff12734C), width: 1)),
+            hintText: 'Enter your Email',
+            fillColor: Color.fromARGB(255, 0, 0, 0),
           ),
         ),
-      ],
-    );
+      ),
+    ]);
   }
 
   Widget buildPassword() {
@@ -54,10 +56,10 @@ class _LoginScreensState extends State<LoginScreens> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'PASSWORD',
+          'Password',
           style: TextStyle(
               color: Color.fromARGB(255, 3, 3, 3),
-              fontSize: 16,
+              fontSize: 15,
               fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 14),
@@ -65,21 +67,25 @@ class _LoginScreensState extends State<LoginScreens> {
           alignment: Alignment.centerLeft,
           // ignore: prefer_const_constructors
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 196, 196, 196),
+              color: Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(
                 (10),
               )),
           height: 40,
           child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(
-              color: Colors.black,
-            ),
+            obscureText: true,
             decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.all(13.0),
+              contentPadding: EdgeInsets.symmetric(horizontal: 10),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide:
+                      const BorderSide(color: Color(0xff12734C), width: 1)),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide:
+                      const BorderSide(color: Color(0xff12734C), width: 1)),
               hintText: 'Enter your Password',
-              hintStyle: TextStyle(),
+              fillColor: Color.fromARGB(255, 0, 0, 0),
             ),
           ),
         ),
@@ -91,24 +97,34 @@ class _LoginScreensState extends State<LoginScreens> {
     return Container(
       alignment: Alignment.centerRight,
       child: TextButton(
-          onPressed: () => print(''),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const forgot()),
+            );
+          },
           child: Text(
             'Forget Password?',
-            style: TextStyle(color: Color.fromARGB(255, 4, 4, 4)),
+            style: TextStyle(
+                fontSize: 15,
+                color: Color(
+                  0xfff12734C,
+                )),
           )),
     );
   }
 
   Widget buildRememberme() {
     return Container(
+      alignment: Alignment.centerLeft,
       height: 20,
       child: Row(children: [
         Theme(
-          data: ThemeData(unselectedWidgetColor: Color.fromARGB(255, 0, 0, 0)),
+          data: ThemeData(unselectedWidgetColor: Color(0xfff12734C)),
           child: Checkbox(
               value: isRememberMe,
               checkColor: Color.fromARGB(255, 255, 255, 255),
-              activeColor: Color.fromARGB(255, 0, 0, 0),
+              activeColor: Color(0xfff12734C),
               onChanged: ((value) {
                 setState(() {
                   isRememberMe = value!;
@@ -123,12 +139,17 @@ class _LoginScreensState extends State<LoginScreens> {
 
   Widget buildLoginBtn() {
     return Container(
+      width: 130, //width of button
+      height: 95, //height of button
       padding: EdgeInsets.symmetric(vertical: 25),
-      width: double.infinity,
+
       child: ElevatedButton(
         onPressed: () => print(''),
         style: ElevatedButton.styleFrom(
-          primary: Colors.green,
+          primary: Color(0xfff12734C),
+          shape: RoundedRectangleBorder(
+              //to set border radius to button
+              borderRadius: BorderRadius.circular(30)),
         ),
         child: Text(
           'SIGN IN',
@@ -147,23 +168,29 @@ class _LoginScreensState extends State<LoginScreens> {
           text: 'Not a member?',
           style: TextStyle(
             color: Color.fromARGB(255, 0, 0, 0),
-            fontSize: 13,
+            fontSize: 15,
           )),
       TextSpan(
-        text: 'SIGNUP',
+        text: 'Sign Up',
         style: TextStyle(
-          color: Color.fromARGB(255, 71, 117, 255),
-          fontSize: 13,
+          fontSize: 15,
+          color: Color(0xfff12734C),
         ),
       ),
     ]);
     return GestureDetector(
-      onTap: () => print(''),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SignUp()),
+        );
+      },
       child: RichText(
         text: textSpan,
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,31 +203,27 @@ class _LoginScreensState extends State<LoginScreens> {
               height: double.infinity,
               width: double.infinity,
               child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
                 padding: EdgeInsets.symmetric(
                   horizontal: 25,
-                  vertical: 120,
+                  vertical: 50,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    
-                    Text(
-                      'SIGN IN',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 50),
+                    Image.asset('assets/signin.png'),
                     buildEmail(),
-                    SizedBox(height: 50),
+                    SizedBox(height: 25),
                     buildPassword(),
-                    SizedBox(height: 30),
-                    buildForgetpass(),
-                    buildRememberme(),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        buildRememberme(),
+                        buildForgetpass(),
+                      ],
+                    ),
                     buildLoginBtn(),
+                    SizedBox(height: 19),
                     buildSignupBtn(),
                   ],
                 ),

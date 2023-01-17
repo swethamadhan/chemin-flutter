@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
+import 'package:motion_tab_bar_v2/motion-badge.widget.dart';
 
 class navbar extends StatelessWidget {
   const navbar({Key? key}) : super(key: key);
@@ -53,12 +55,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         initialSelectedTab: "Home",
         useSafeArea: true, // default: true, apply safe area wrapper
         labels: const ["Dashboard", "Home", "Profile", "Settings"],
-        icons: const [
-          Icons.dashboard,
-          Icons.home,
-          Icons.people_alt,
-          Icons.settings
-        ],
+        icons: const [Icons.dashboard, Icons.home, Icons.people_alt, Icons.settings],
 
         tabSize: 50,
         tabBarHeight: 55,
@@ -80,8 +77,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         },
       ),
       body: TabBarView(
-        physics:
-            NeverScrollableScrollPhysics(), // swipe navigation handling is not supported
+        physics: NeverScrollableScrollPhysics(), // swipe navigation handling is not supported
         controller: _tabController,
         // ignore: prefer_const_literals_to_create_immutables
         children: <Widget>[
